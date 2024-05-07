@@ -3,7 +3,23 @@ require '../../core/main.php';
 
 function register($username, $password, $email, $fullName) {
     $db = getDB();
-    $stmt = $db->prepare('INSERT INTO Users (Username, Password, Email, FullName, Token, RoleID) VALUES (:username, :password, :email, :fullName, :token, 0)');
+    $stmt = $db->prepare('
+        INSERT INTO Users (
+            Username, 
+            Password, 
+            Email, 
+            FullName, 
+            Token, 
+            RoleID
+        ) VALUES (
+            :username, 
+            :password, 
+            :email, 
+            :fullName, 
+            :token, 
+            0
+        )
+    ');
     $stmt->bindValue(':username', $username, SQLITE3_TEXT);
     $stmt->bindValue(':password', password_hash($password, PASSWORD_DEFAULT), SQLITE3_TEXT);
     $stmt->bindValue(':email', $email, SQLITE3_TEXT);

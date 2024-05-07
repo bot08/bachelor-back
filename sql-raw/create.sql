@@ -13,6 +13,7 @@ CREATE TABLE Frames (
     FrameID INTEGER PRIMARY KEY AUTOINCREMENT,
     FrameManufacturer TEXT NOT NULL,
     FrameName TEXT NOT NULL,
+    FrameImage TEXT NOT NULL,
     FrameDescription TEXT,
     FramePrice DECIMAL(10, 2) NOT NULL
 );
@@ -36,6 +37,8 @@ CREATE TABLE SunglassesModels (
     ModelID INTEGER PRIMARY KEY AUTOINCREMENT,
     ModelManufacturer TEXT NOT NULL,
     ModelName TEXT NOT NULL,
+    ModelImage TEXT NOT NULL,
+    ModelPolarization BOOLEAN DEFAULT FALSE,
     ModelDescription TEXT,
     ModelPrice DECIMAL(10, 2) NOT NULL
 );
