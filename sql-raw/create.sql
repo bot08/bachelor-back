@@ -2,10 +2,11 @@ CREATE TABLE Users (
     UserID INTEGER PRIMARY KEY AUTOINCREMENT,
     LastLogin DATETIME,
     Token TEXT,
+    RoleID INTEGER NOT NULL,
     Username TEXT UNIQUE NOT NULL,
     Password TEXT NOT NULL,
     Email TEXT UNIQUE NOT NULL,
-    FullName TEXT NOT NULL,
+    FullName TEXT NOT NULL
 );
 
 CREATE TABLE Frames (
