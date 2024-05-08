@@ -1,6 +1,6 @@
 <?php
 define('DB_PATH', realpath(dirname(__FILE__) . '/../database/index.db'));
-// Підключення до SQLite бази даних
+// Підключення до БД
 $db = new SQLite3(DB_PATH);
 
 // Заголовки

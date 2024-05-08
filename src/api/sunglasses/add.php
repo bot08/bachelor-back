@@ -8,15 +8,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (getUserRole($token) >= $roles['editor']) {
         $data = json_decode(file_get_contents('php://input'), true);
         
-        // КОД НИЖЧЕ ЦЕ КОСТИЛЬ БО ПО НОРМАЛЬНОМУ НЕ ХОЧЕ (ЗАКОМЕНТОВАНИЙ)
-        $sql = "
-        INSERT INTO SunglassesModels (ModelManufacturer, ModelName, ModelImage, ModelPolarization, ModelDescription, ModelPrice)
-        VALUES 
-        ('".$data['manufacturer']."', '".$data['name']."', '".$data['image']."', ".$data['polarization'].", '".$data['description']."', ".$data['price'].")
-        ";
-        $db->exec($sql);
-
-        /*
         $stmt = $db->prepare('
             INSERT INTO SunglassesModels (
                 ModelManufacturer, 
@@ -26,21 +17,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ModelDescription, 
                 ModelPrice
             ) VALUES (
-                :manufacturer,
-                :name,
-                :image,
-                :polarization,
-                :description,
+                :manufacturer, 
+                :name, 
+                :image, 
+                :polarization, 
+                :description, 
                 :price
             )
         ');
-        
-        $stmt->bindValue(':manufacturer', $data['manufacturer'], SQLITE3_TEXT);
-        $stmt->bindValue(':name', $data['name'], SQLITE3_TEXT);
-        $stmt->bindValue(':image', $data['image'], SQLITE3_TEXT);
-        $stmt->bindValue(':polarization', $data['polarization'] ?? false, SQLITE3_INTEGER);
-        $stmt->bindValue(':description', $data['description'], SQLITE3_TEXT);
-        $stmt->bindValue(':price', $data['price'], SQLITE3_NUMERIC);
+
+        $stmt->bindParam(':manufacturer', $data['manufacturer']);
+        $stmt->bindParam(':name', $data['name']);
+        $stmt->bindParam(':image', $data['image']);
+        $stmt->bindParam(':polarization', $data['polarization'], SQLITE3_INTEGER); // BOOLEAN
+        $stmt->bindParam(':description', $data['description']);
+        $stmt->bindParam(':price', $data['price'], SQLITE3_FLOAT); // DECIMAL(10, 2)
         
         if ($stmt->execute()) {
             echo json_encode(['message' => 'Сонцезахисні окуляри успішно додано.']);
@@ -48,7 +39,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             http_response_code(500);
             echo json_encode(['error' => 'Помилка бази даних.']);
         }
-        */
     } else {
         http_response_code(403);
         echo json_encode(['error' => 'Доступ заборонено']);
