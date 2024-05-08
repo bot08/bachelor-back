@@ -17,7 +17,7 @@ sudo systemctl restart apache2
 ```
 In:
 /etc/apache2/sites-available/default.conf\
-/etc/apache2/sites-available/000-default.conf\
+/etc/apache2/sites-available/000-default.conf
 
 Paste:
 ```
@@ -31,7 +31,7 @@ Paste:
 service apache2 restart
 ```
 
-#### Dockerfile
+#### Dockerfile:
 ```
 FROM php:7.4-apache
 
