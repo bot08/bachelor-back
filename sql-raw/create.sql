@@ -46,6 +46,7 @@ CREATE TABLE SunglassesModels (
 CREATE TABLE Accessories (
     AccessoryID INTEGER PRIMARY KEY AUTOINCREMENT,
     AccessoryManufacturer TEXT NOT NULL,
+    AccessoryImage TEXT NOT NULL,
     AccessoryName TEXT NOT NULL,
     AccessoryDescription TEXT,
     AccessoryPrice DECIMAL(10, 2) NOT NULL

@@ -35,7 +35,8 @@
 ### sunglasses:
 
 ```
-/src/api/sunglasses/get.php?&limit=3
+/src/api/sunglasses/get.php
+?&limit=3
 ?manufacturer=Brand
 ?name=Model
 ?polarized=true
@@ -67,6 +68,52 @@ token needed
 {
     "id": 1,
     "price": 29.99
+}
+```
+
+token needed
+
+```
+/src/api/sunglasses/delete.php
+
+{
+    "id": 2
+}
+```
+
+token needed
+
+### accessories:
+
+```
+/src/api/accessories/get.php
+?&limit=3
+?manufacturer=Brand
+?name=Model
+?offset=3
+?sort=price
+?sort=price&order=desc
+```
+
+```
+/src/api/accessories/add.php
+
+{
+    "manufacturer": "Dawn house",
+    "name": "Tryapka",
+    "image": "321321.jpg",
+    "description": "sakdnflk f ladslf jdsh fhdjl fhsdjl; fjlsdh fjlshdflj",
+    "price": 6.99
+}
+```
+
+token needed
+
+```
+/src/api/accessories/delete.php
+
+{
+    "id": 2
 }
 ```
 
