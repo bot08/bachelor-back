@@ -118,3 +118,39 @@ token needed
 ```
 
 token needed
+
+### frames:
+
+```
+/src/api/frames/get.php
+?&limit=3
+?manufacturer=Brand
+?name=Model
+?offset=3
+?sort=price
+?sort=price&order=desc
+```
+
+```
+/src/api/frames/add.php
+
+{
+    "manufacturer": "ТОВ Люксгласс",
+    "name": "Сірий метеорит",
+    "image": "/database/image/a.png",
+    "description": "Опис рамки 123",
+    "price": 123.45
+}
+```
+
+token needed
+
+```
+/src/api/frames/delete.php
+
+{
+    "id": 2
+}
+```
+
+token needed

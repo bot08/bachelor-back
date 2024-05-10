@@ -1,17 +1,18 @@
 <?php
 $dbPath = 'database/index.db';
 
-// DELETE CURRENT DATA
 if (file_exists($dbPath)) {
-    unlink($dbPath);
-    
-    $files = glob("database/images" . "/*.png");
-    foreach ($files as $file) {
-        if (is_file($file)) {
-            unlink($file);
-        }
+    echo "Firstly, delete the current database for reinitialization";
+    exit;
+    //unlink($dbPath);
+}
+
+// CLEAR IMAGES
+$files = glob("database/images" . "/*.png");
+foreach ($files as $file) {
+    if (is_file($file)) {
+        unlink($file);
     }
-    //exit;
 }
 
 $db = new SQLite3($dbPath);
@@ -32,6 +33,10 @@ $db->exec($sql);
 
 // ADD EXAMPLE ACCESSORIES
 $sql = file_get_contents('../sql-raw/accessories.sql');
+$db->exec($sql);
+
+// ADD EXAMPLE FRAMES
+$sql = file_get_contents('../sql-raw/frames.sql');
 $db->exec($sql);
 
 // DONE
