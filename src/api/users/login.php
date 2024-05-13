@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Перевірка, чи заповнені всі необхідні поля
     if (!isset($data['username']) || !isset($data['password'])) {
-        http_response_code(400);
+        //http_response_code(400);
         echo json_encode(['error' => 'Не всі необхідні поля заповнені']);
         return;
     }
@@ -43,14 +43,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'roleId' => $row['RoleID']
             ]);
         } else {
-            http_response_code(500);
+            //http_response_code(500);
             echo json_encode(['error' => 'Сталася помилка під час отримання даних користувача']);
         }
     } else {
-        http_response_code(401);
+        //http_response_code(401);
         echo json_encode(['error' => 'Невірне імя користувача або пароль']);
     }
 } 
 else {
-    http_response_code(405);
+    //http_response_code(405);
 }

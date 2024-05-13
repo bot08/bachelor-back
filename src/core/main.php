@@ -4,8 +4,11 @@ define('DB_PATH', realpath(dirname(__FILE__) . '/../database/index.db'));
 $db = new SQLite3(DB_PATH);
 
 // Заголовки
+http_response_code(200);
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Methods: GET,POST");
+header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
 
 // Основні ролі
 $roles = array(

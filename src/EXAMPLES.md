@@ -13,6 +13,10 @@
 ```
 
 ```
+/src/api/users/get_user.php?token=...
+```
+
+```
 /src/api/users/register.php
 
 {

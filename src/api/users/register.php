@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Перевірка, чи заповнені всі необхідні поля
     if (!isset($data['username']) || !isset($data['password']) || !isset($data['email']) || !isset($data['fullName'])) {
-        http_response_code(400);
+        //http_response_code(400);
         echo json_encode(['error' => 'Не всі необхідні поля заповнені']);
         return;
     }
@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $count = $result->fetchArray(SQLITE3_NUM)[0];
 
     if ($count > 0) {
-        http_response_code(400);
+        //http_response_code(400);
         echo json_encode(['error' => 'Імʼя користувача або електронна пошта вже зайняті']);
         return;
     }
@@ -59,10 +59,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($userId) {
         echo json_encode(['message' => 'Користувач успішно зареєстрований', 'userId' => $userId]);
     } else {
-        http_response_code(500);
+        //http_response_code(500);
         echo json_encode(['error' => 'Сталася помилка під час реєстрації']);
     }
 } 
 else {
-    http_response_code(405);
+    //http_response_code(405);
 }
