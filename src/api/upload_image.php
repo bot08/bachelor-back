@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Перевірка розміру файлу (максимальний розмір 2 МБ)
         if ($file_size > 2097152) {
-            http_response_code(400);
+            //http_response_code(400);
             echo json_encode(['error' => 'Розмір файлу перевищує допустимий ліміт 2 МБ.']);
             exit;
         }
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $image = imagecreatefrompng($file_tmp);
                 break;
             default:
-                http_response_code(400);
+                //http_response_code(400);
                 echo json_encode(['error' => 'Некоректний формат файлу.']);
                 exit;
         }
@@ -42,18 +42,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Збереження зображення у форматі PNG
         if ($image !== null) {
             if (imagepng($image, $upload_path)) {
-                echo json_encode(['path' => $upload_path]);
+                echo json_encode(['path' => substr($upload_path, 2)]);
             } else {
-                http_response_code(500);
+                //http_response_code(500);
                 echo json_encode(['error' => 'Помилка під час збереження файлу.']);
             }
             imagedestroy($image);
         }
     } else {
-        http_response_code(400);
+        //http_response_code(400);
         echo json_encode(['error' => 'Файл не був завантажений.']);
     }
 } else {
-    http_response_code(405);
+    //http_response_code(405);
     echo json_encode(['error' => 'Метод не дозволений.']);
 }

@@ -16,6 +16,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
     $conditions = [];
 
+    // Вивід з певним id
+    if (isset($_GET['id'])) {
+        $conditions[] = "AccessoryID = :id";
+    }
     // Фільтр за виробником
     if (isset($_GET['manufacturer'])) {
         $conditions[] = "AccessoryManufacturer LIKE '%' || :manufacturer || '%'";
@@ -48,6 +52,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $stmt = $db->prepare($query);
 
     // Пов'язування значень параметрів запиту
+    if (isset($_GET['id'])) {
+        $stmt->bindValue(':id', (int)$_GET['id'], SQLITE3_INTEGER);
+    }
     if (isset($_GET['manufacturer'])) {
         $stmt->bindValue(':manufacturer', $_GET['manufacturer'], SQLITE3_TEXT);
     }
