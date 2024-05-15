@@ -1,4 +1,4 @@
--- y
+-- Таблиця користувачів
 CREATE TABLE Users (
     UserID INTEGER PRIMARY KEY AUTOINCREMENT,
     LastLogin DATETIME,
@@ -10,7 +10,7 @@ CREATE TABLE Users (
     FullName TEXT NOT NULL
 );
 
--- y
+-- Таблиця моделей сонцезахисних окулярів
 CREATE TABLE SunglassesModels (
     ModelID INTEGER PRIMARY KEY AUTOINCREMENT,
     ModelManufacturer TEXT NOT NULL,
@@ -21,7 +21,7 @@ CREATE TABLE SunglassesModels (
     ModelPrice DECIMAL(10, 2) NOT NULL
 );
 
--- y
+-- Таблиця аксесуарів
 CREATE TABLE Accessories (
     AccessoryID INTEGER PRIMARY KEY AUTOINCREMENT,
     AccessoryManufacturer TEXT NOT NULL,
@@ -31,6 +31,7 @@ CREATE TABLE Accessories (
     AccessoryPrice DECIMAL(10, 2) NOT NULL
 );
 
+-- Таблиця оправ
 CREATE TABLE Frames (
     FrameID INTEGER PRIMARY KEY AUTOINCREMENT,
     FrameManufacturer TEXT NOT NULL,
@@ -40,21 +41,17 @@ CREATE TABLE Frames (
     FramePrice DECIMAL(10, 2) NOT NULL
 );
 
+-- Таблиця лінз
 CREATE TABLE Lenses (
     LensID INTEGER PRIMARY KEY AUTOINCREMENT,
     LensManufacturer TEXT NOT NULL,
+    LensManufacturerCountry TEXT NOT NULL,
     LensType TEXT NOT NULL,
     LensDescription TEXT,
     LensPrice DECIMAL(10, 2) NOT NULL
 );
 
-CREATE TABLE LensSettings (
-    SettingID INTEGER PRIMARY KEY AUTOINCREMENT,
-    SettingName TEXT NOT NULL,
-    SettingDescription TEXT,
-    SettingPrice DECIMAL(10, 2) NOT NULL
-);
-
+-- Таблиця замовлень
 CREATE TABLE Orders (
     OrderID INTEGER PRIMARY KEY AUTOINCREMENT,
     UserID INTEGER NOT NULL,
@@ -64,12 +61,18 @@ CREATE TABLE Orders (
     FOREIGN KEY (UserID) REFERENCES Users(UserID)
 );
 
+-- Таблиця деталей замовлень
 CREATE TABLE OrderDetails (
     DetailID INTEGER PRIMARY KEY AUTOINCREMENT,
     OrderID INTEGER NOT NULL,
     FrameID INTEGER,
     LensID INTEGER,
-    SettingID INTEGER,
+    DioptersLeft DECIMAL(5, 2),
+    DioptersRight DECIMAL(5, 2),
+    AstigmatismLeft DECIMAL(5, 2),
+    AstigmatismRight DECIMAL(5, 2),
+    LensSettingDescription TEXT,
+    LensSettingPrice DECIMAL(10, 2),
     ModelID INTEGER,
     AccessoryID INTEGER,
     Quantity INTEGER NOT NULL,
@@ -77,7 +80,6 @@ CREATE TABLE OrderDetails (
     FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
     FOREIGN KEY (FrameID) REFERENCES Frames(FrameID),
     FOREIGN KEY (LensID) REFERENCES Lenses(LensID),
-    FOREIGN KEY (SettingID) REFERENCES LensSettings(SettingID),
     FOREIGN KEY (ModelID) REFERENCES SunglassesModels(ModelID),
     FOREIGN KEY (AccessoryID) REFERENCES Accessories(AccessoryID)
 );

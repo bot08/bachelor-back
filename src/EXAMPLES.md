@@ -40,6 +40,7 @@
 
 ```
 /src/api/sunglasses/get.php
+?id=1
 ?&limit=3
 ?manufacturer=Brand
 ?name=Model
@@ -91,6 +92,7 @@ token needed
 
 ```
 /src/api/accessories/get.php
+?id=1
 ?&limit=3
 ?manufacturer=Brand
 ?name=Model
@@ -155,6 +157,37 @@ token needed
 {
     "id": 2
 }
+```
+
+token needed
+
+### orders:
+
+```
+/src/api/orders/add.php
+{
+    "order": {
+        "deliveryAddress": "123 Main St, Kyiv",
+        "totalAmount": 200.00,
+        "frameID": 2,
+        "lensID": 3,
+        "dioptersLeft": 1.5,
+        "dioptersRight": 2.0,
+        "astigmatismLeft": 0.75,
+        "astigmatismRight": 1.0,
+        "lensDescription": "Corrective Lens",
+        "lensPrice": 50.00,
+        "quantity": 1,
+        "unitPrice": 150.00
+    }
+}
+```
+
+token needed
+
+```
+/src/api/orders/get.php
+?token=token
 ```
 
 token needed

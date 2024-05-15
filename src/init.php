@@ -40,5 +40,9 @@ $db->exec($sql);
 $sql = file_get_contents('../sql-raw/frames.sql');
 $db->exec($sql);
 
+// ADD EXAMPLE LENSES
+$sql = file_get_contents('../sql-raw/lenses.sql');
+$db->exec($sql);
+
 // DONE
 echo 'Database initialization was successful';

@@ -36,3 +36,17 @@ function getUserRole($token) {
 
     return false;
 }
+
+function getUserID($token) {
+    $db = getDB();
+    $stmt = $db->prepare('SELECT UserID FROM Users WHERE Token = :token');
+    $stmt->bindValue(':token', $token, SQLITE3_TEXT);
+    $result = $stmt->execute();
+    $row = $result->fetchArray(SQLITE3_ASSOC);
+
+    if ($row) {
+        return $row['UserID'];
+    }
+
+    return false;
+}

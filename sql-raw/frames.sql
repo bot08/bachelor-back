@@ -1,7 +1,7 @@
 INSERT INTO Frames (FrameManufacturer, FrameName, FrameImage, FrameDescription, FramePrice) 
 VALUES 
-    ('BikeCraft', 'Mountain Beast', '/images/frame1.jpg', 'Зовсім новий високотехнологічний велосипедний каркас, створений для непохитних умов гірських трас.', 1999.99),
-    ('SpeedyBikes', 'Road Tornado', '/images/frame2.jpg', 'Найлегший та найшвидший каркас для шосейних гонок, який допоможе встановити вам неймовірні рекорди швидкості.', 2999.99),
-    ('PrideCycleWorks', 'Універсальна Підтримка', '/images/frame3.jpg', 'Ідеальний каркас для довгих туристичних поїздок, який забезпечить вам комфорт та надійність.', 2499.99),
-    ('ExtremeCycles', 'Turbo BMX', '/images/frame4.jpg', 'Нова модель каркасу для екстремальних велосипедистів, які шукають адреналін та швидкість у повітрі.', 1499.99),
-    ('CarbonCraft', 'Aero Light', '/images/frame5.jpg', 'Найлегший та найшвидший каркас, який забезпечить вам неймовірний комфорт і швидкість на дорозі.', 3999.99);
+    ('Ray-Ban', 'Wayfarer', 'wayfarer.jpg', 'Класична оправа Wayfarer від Ray-Ban.', 1200.00),
+    ('Oakley', 'Frogskins', 'frogskins.jpg', 'Стильна оправа Frogskins від Oakley.', 1400.00),
+    ('Persol', 'PO3019S', 'po3019s.jpg', 'Елегантна оправа PO3019S від Persol.', 1800.00),
+    ('Maui Jim', 'Bamboo Forest', 'bamboo_forest.jpg', 'Спортивна оправа Bamboo Forest від Maui Jim.', 1600.00),
+    ('Prada', 'PR 17WS', 'pr_17ws.jpg', 'Модна оправа PR 17WS від Prada.', 2000.00);

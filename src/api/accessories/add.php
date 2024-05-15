@@ -4,10 +4,14 @@ $db = getDB();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $token = isset($_COOKIE['token']) ? $_COOKIE['token'] : null;
+    $data = json_decode(file_get_contents('php://input'), true);
+    
+    if(!isset($token)){
+        $token = isset($data['token']) ? $data['token'] : null;
+    }
     
     if (getUserRole($token) >= $roles['editor']) {
-        $data = json_decode(file_get_contents('php://input'), true);
-        
+
         $stmt = $db->prepare('
             INSERT INTO Accessories (
                 AccessoryManufacturer,
@@ -33,11 +37,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($stmt->execute()) {
             echo json_encode(['message' => 'Аксесуар успішно додано.']);
         } else {
-            http_response_code(500);
+            //http_response_code(500);
             echo json_encode(['error' => 'Помилка бази даних.']);
         }
     } else {
-        http_response_code(403);
+        //http_response_code(403);
         echo json_encode(['error' => 'Доступ заборонено']);
     }
 }
