@@ -1,6 +1,6 @@
 INSERT INTO Accessories (AccessoryManufacturer, AccessoryImage, AccessoryName, AccessoryDescription, AccessoryPrice) VALUES
-    ('Ray-Ban', 'ray_ban_cleaning_cloth.jpg', 'Платівка для чищення Ray-Ban', "М'яка платівка для чищення окулярів Ray-Ban. Виготовлена з мікрофібри.", 9.99),
-    ('Oakley', 'oakley_hard_case.jpg', 'Жорсткий чохол Oakley', 'Чохол з пластику для зберігання окулярів Oakley. Захищає від подряпин та пошкоджень.', 14.99),
-    ('LensCrafters', 'lenscrafters_anti-fog_solution.jpg', 'Анти-туман для лінз', 'Спеціальний розчин для обробки окулярів, що запобігає запотіванню.', 7.49),
-    ('Gucci', 'gucci_embellished_strap.jpg', 'Прикрашена стрічка Gucci', 'Елегантна прикрашена стрічка для фіксації окулярів Gucci.', 29.99),
-    ('Nike', 'nike_sports_strap.jpg', 'Спортивна стрічка Nike', 'Гумова стрічка для фіксації спортивних окулярів Nike.', 12.99);
+    ('Casta', '/database/images/ac1.jpg', 'Футляр картонний WF505', "Футляр для зберігання окулярів.", 99.99),
+    ('Opti-Free', '/database/images/ac2.jpg', 'Розчин для лінз Opti-Free RepleniSH', 'Універсальний розчин для догляду за контактними лінзами. 300мл.', 200.00),
+    ('Rodenstock', '/3', 'Спрей для очищення Rodenstock', 'Спрей для очищення окулярів Rodenstock.', 180.00),
+    ('Zeiss', '/4', 'Серветки для окулярів Zeiss', 'Вологі серветки для очищення окулярів.', 100.00),
+    ('Cocoon', '/database/images/ac5.jpg', 'Футляр Cocoon', 'Захисний футляр для окулярів Cocoon.', 250.00);
