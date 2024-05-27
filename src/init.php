@@ -24,8 +24,9 @@ $db->exec($sql);
 // ADD ADMIN USER
 $db->exec("
 INSERT INTO Users (LastLogin, Token, RoleID, Username, Password, Email, FullName) 
-VALUES ('2024-05-07 12:00:00', '".bin2hex(random_bytes(32))."', 2, 'admin', '".password_hash('admin123', PASSWORD_DEFAULT)."', 'admin@admin.com', 'Admin User');
-VALUES ('2024-05-07 12:00:00', '".bin2hex(random_bytes(32))."', 1, 'mod', '".password_hash('mod123', PASSWORD_DEFAULT)."', 'mod@admin.com', 'Mod User');
+VALUES 
+    ('2024-05-07 12:00:00', '".bin2hex(random_bytes(32))."', 2, 'admin', '".password_hash('admin123', PASSWORD_DEFAULT)."', 'admin@admin.com', 'Admin User'),
+    ('2024-05-07 12:00:00', '".bin2hex(random_bytes(32))."', 1, 'mod', '".password_hash('mod123', PASSWORD_DEFAULT)."', 'mod@admin.com', 'Mod User');
 ");
 
 // ADD EXAMPLE SUNGLASSES
