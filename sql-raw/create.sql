@@ -56,6 +56,7 @@ CREATE TABLE Orders (
     OrderID INTEGER PRIMARY KEY AUTOINCREMENT,
     UserID INTEGER NOT NULL,
     DeliveryAddress TEXT NOT NULL,
+    FastDelivery BOOLEAN DEFAULT FALSE,
     OrderDate DATE NOT NULL,
     TotalAmount DECIMAL(10, 2) NOT NULL,
     FOREIGN KEY (UserID) REFERENCES Users(UserID)
@@ -71,6 +72,7 @@ CREATE TABLE OrderDetails (
     DioptersRight DECIMAL(5, 2),
     AstigmatismLeft DECIMAL(5, 2),
     AstigmatismRight DECIMAL(5, 2),
+    DP DECIMAL(5, 2),
     LensSettingDescription TEXT,
     LensSettingPrice DECIMAL(10, 2),
     ModelID INTEGER,

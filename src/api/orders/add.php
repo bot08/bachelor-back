@@ -22,13 +22,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             try {
                 // Вставка замовлення
                 $stmt = $db->prepare('
-                    INSERT INTO Orders (UserID, DeliveryAddress, OrderDate, TotalAmount)
-                    VALUES (:userID, :deliveryAddress, :orderDate, :totalAmount)
+                    INSERT INTO Orders (UserID, DeliveryAddress, OrderDate, TotalAmount, FastDelivery)
+                    VALUES (:userID, :deliveryAddress, :orderDate, :totalAmount, :fastDelivery)
                 ');
                 $stmt->bindValue(':userID', $userID, SQLITE3_INTEGER);
                 $stmt->bindValue(':deliveryAddress', $orderData['deliveryAddress'], SQLITE3_TEXT);
                 $stmt->bindValue(':orderDate', date('Y-m-d'), SQLITE3_TEXT);
                 $stmt->bindValue(':totalAmount', $orderData['totalAmount'], SQLITE3_FLOAT);
+                $stmt->bindValue(':fastDelivery', $orderData['fastDelivery'] ?? 0, SQLITE3_INTEGER);
                 $stmt->execute();
 
                 $orderID = $db->querySingle('SELECT last_insert_rowid() AS OrderID');
@@ -38,12 +39,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     INSERT INTO OrderDetails (
                         OrderID, FrameID, LensID, DioptersLeft, DioptersRight,
                         AstigmatismLeft, AstigmatismRight, LensSettingDescription,
-                        LensSettingPrice, ModelID, AccessoryID, Quantity, UnitPrice
+                        LensSettingPrice, ModelID, AccessoryID, Quantity, UnitPrice, DP
                     )
                     VALUES (
                         :orderID, :frameID, :lensID, :dioptersLeft, :dioptersRight,
                         :astigmatismLeft, :astigmatismRight, :lensDescription,
-                        :lensPrice, :modelID, :accessoryID, :quantity, :unitPrice
+                        :lensPrice, :modelID, :accessoryID, :quantity, :unitPrice, :dp
                     )
                 ');
                 $stmt->bindValue(':orderID', $orderID, SQLITE3_INTEGER);
@@ -59,6 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt->bindValue(':accessoryID', isset($orderData['accessoryID']) ? $orderData['accessoryID'] : null, SQLITE3_INTEGER);
                 $stmt->bindValue(':quantity', isset($orderData['quantity']) ? $orderData['quantity'] : 1, SQLITE3_INTEGER);
                 $stmt->bindValue(':unitPrice', isset($orderData['unitPrice']) ? $orderData['unitPrice'] : 0, SQLITE3_FLOAT);
+                $stmt->bindValue(':dp', $orderData['dp'] ?? null, SQLITE3_FLOAT);
                 $stmt->execute();
 
                 $db->exec('COMMIT TRANSACTION');

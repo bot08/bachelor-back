@@ -22,6 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                 o.OrderDate,
                 o.TotalAmount,
                 u.Username,
+                o.FastDelivery,
                 od.DetailID,
                 od.FrameID,
                 od.LensID,
@@ -34,7 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                 od.ModelID,
                 od.AccessoryID,
                 od.Quantity,
-                od.UnitPrice
+                od.UnitPrice,
+                od.DP
             FROM Orders o
             JOIN Users u ON o.UserID = u.UserID
             LEFT JOIN OrderDetails od ON o.OrderID = od.OrderID
@@ -61,6 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     'OrderID' => $row['OrderID'],
                     'UserID' => $row['UserID'],
                     'DeliveryAddress' => $row['DeliveryAddress'],
+                    'FastDelivery' => $row['FastDelivery'],
                     'OrderDate' => $row['OrderDate'],
                     'TotalAmount' => $row['TotalAmount'],
                     'Username' => $row['Username'],
@@ -77,6 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     'DioptersRight' => $row['DioptersRight'],
                     'AstigmatismLeft' => $row['AstigmatismLeft'],
                     'AstigmatismRight' => $row['AstigmatismRight'],
+                    'DP' => $row['DP'],
                     'LensSettingDescription' => $row['LensSettingDescription'],
                     'LensSettingPrice' => $row['LensSettingPrice'],
                     'ModelID' => $row['ModelID'],
