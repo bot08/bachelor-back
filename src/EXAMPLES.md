@@ -161,6 +161,20 @@ token needed
 
 token needed
 
+### lens:
+
+```
+/src/api/lens/get.php
+...
+```
+
+```
+/src/api/lens/add.php
+...
+```
+
+token needed
+
 ### orders:
 
 ```
@@ -168,6 +182,7 @@ token needed
 {
     "order": {
         "deliveryAddress": "123 Main St, Kyiv",
+        "fastDelivery": true,
         "totalAmount": 200.00,
         "frameID": 2,
         "lensID": 3,
@@ -175,6 +190,7 @@ token needed
         "dioptersRight": 2.0,
         "astigmatismLeft": 0.75,
         "astigmatismRight": 1.0,
+        "dp": 63,
         "lensDescription": "Corrective Lens",
         "lensPrice": 50.00,
         "quantity": 1,
