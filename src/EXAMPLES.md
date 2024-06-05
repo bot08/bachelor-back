@@ -36,6 +36,23 @@
 }
 ```
 
+```
+/src/api/users/delete.php
+{
+    "userId": 3,
+    "token": "token"
+}
+```
+
+```
+/src/api/users/update_role.php
+{
+    "userId": 3,
+    "roleId": 1,
+    "token": "token"
+}
+```
+
 ### sunglasses:
 
 ```
